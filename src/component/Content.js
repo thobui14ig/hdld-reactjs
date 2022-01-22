@@ -87,11 +87,9 @@ export default function Content() {
           </Toolbar>
         </HtmlEditor>
 
-        <div className="options">
-          {/* <div className="value-content">{result === "" ? valueContent : result}</div> */}
-          <div dangerouslySetInnerHTML={{__html: result === "" ? valueContent : result}} />
-        </div>
-      </div>    
+
+      </div> 
+      <HtmlEditor  value={result === "" ? valueContent : result}></HtmlEditor>   
     </>
 
   );
