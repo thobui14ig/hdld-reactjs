@@ -1,0 +1,11 @@
+.side-bar{
+    color: black;
+    float: right;
+    width: 400px;
+    height: 1000px;
+    border: 1px solid #ced4da;
+    padding: 10px
+}
+.list-group{
+    width: 150px;
+}
