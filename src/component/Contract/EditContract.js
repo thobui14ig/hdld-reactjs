@@ -20,7 +20,7 @@ const EditContract = () => {
     // let { id } = useParams();
     const [editorValueType, setEditorValueType] = useState("html");
     const [contract, setContract] = useState([])
-    const [contentContract, setContentContract] = useState("");
+    const [contentContract, setContentContract] = useState("<div></div>");
 
     
     // const valueChanged = (e) => {
@@ -59,11 +59,11 @@ const EditContract = () => {
         getContent()
     }
 
-    // function valueChanged(e) {
-    //     setContentContract(e.value);
-    //   } onValueChanged={valueChanged}
+    function valueChanged(value) {
+        setContentContract(value);
+       console.log(value,'nè huhu')
+      } 
 
-   
 
     return(
         <div className="contract">
@@ -80,8 +80,10 @@ const EditContract = () => {
       <div className="widget-container">
             <HtmlEditor
             height={500}
-            value={contentContract}
+       //   defaultValue={contentContract}
+         value={contentContract}
             valueType={editorValueType}
+    onValueChange={valueChanged}
            
             >
           <Toolbar>
