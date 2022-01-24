@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import HtmlEditor, { Toolbar, Item } from "devextreme-react/html-editor";
-import { markup } from "../data";
+
 // import Content from './component/Content'
 
 import Sidebar from "./Sidebar";
 import "devextreme/ui/html_editor/converters/markdown";
+import { markup } from "../../data";
 
 const sizeValues = ["8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "360pt"];
 const fontValues = [
@@ -20,7 +21,7 @@ const fontValues = [
 ];
 
 
-export default function Content() {
+export default function Contract() {
   const htmlEditor = useRef(null);
   const [valueContent, setValueContent] = useState(markup);
   const [result, setResult] = useState('')
@@ -36,8 +37,22 @@ export default function Content() {
   //   setEditorValueType(e.addedItems[0].text.toLowerCase());
   // };
 
-  const getResult = (name, email, phone) => {
-    setResult(valueContent.replace('{{Ho_va_ten}}', name))
+  const getResult = (obj) => {
+    // console.log(obj)
+
+    let ContentCopy = valueContent;
+    for(let i = 0; i < listOption.length; i++){
+      let value = listOption[i].replace("{{", "");
+      value = value.replace("}}", "");
+
+      // console.log(value)
+      ContentCopy = ContentCopy.replace(listOption[i], obj[value])
+    }
+    // listOption.map(item => (
+    //   // console.log(item)
+      
+    // ))
+    setResult(ContentCopy)
 
   }
 
@@ -46,7 +61,8 @@ export default function Content() {
     const listOptionCopy = listOption;
     setListOption([...listOptionCopy, Option])
   }
-  console.log(listOption)
+
+  
 
   return (
     <>

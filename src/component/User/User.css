@@ -1,0 +1,18 @@
+.new-contract{
+    display: flex;
+    justify-content: center;
+}
+.btn-new-contract{
+    padding: 10px;
+    margin-top: 20px;
+    text-decoration: none;
+    background-color: aqua;
+    border: 1px solid bisque;
+    border-radius: 5px;
+}
+.btn-contract-byid{
+    padding: 10px;
+    background-color: aqua;
+    border: 1px solid bisque;
+    border-radius: 5px;
+}
