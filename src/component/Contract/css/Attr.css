@@ -1,0 +1,18 @@
+.attr{
+    display: flex;
+}
+
+.add-attr{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+.add-attr input{
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.btn-add-attr{
+    width: 30%;
+}

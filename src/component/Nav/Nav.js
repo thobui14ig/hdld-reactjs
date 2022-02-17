@@ -11,6 +11,7 @@ class Nav extends React.Component{
 				<div className="topnav">
 					<NavLink activeClassName="active" to="/" exact>Home</NavLink>
 					<NavLink activeClassName="active" to="/contract">Hợp đồng</NavLink>
+					<NavLink activeClassName="active" to="/pet">Pet</NavLink>
 					{/* <NavLink activeClassName="active" to="/user">User</NavLink>
 					<NavLink activeClassName="active" to="/product">Product</NavLink>
 					<NavLink activeClassName="active" to="/about">About</NavLink>

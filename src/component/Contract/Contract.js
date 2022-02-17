@@ -7,6 +7,7 @@ import HtmlEditor, { Toolbar, Item } from "devextreme-react/html-editor";
 import Sidebar from "./Sidebar";
 import "devextreme/ui/html_editor/converters/markdown";
 import { markup } from "../../data";
+import { getAllUser } from "../Api/User.api";
 
 const sizeValues = ["8pt", "10pt", "12pt", "14pt", "18pt", "24pt", "360pt"];
 const fontValues = [
@@ -26,16 +27,25 @@ export default function Contract() {
   const [valueContent, setValueContent] = useState(markup);
   const [result, setResult] = useState('')
   const [listOption, setListOption] = useState([]); //ds dc chọn
+  const [listUser, setListUser] = useState([])
 
-  const [editorValueType, setEditorValueType] = useState("html");
+  //lấy danh sách nhân viên
+  useEffect(() => {
+    //lấy danh sách úser
+    async function fetchAll(){
+        const resq = await getAllUser();
+        setListUser(resq)
+    }
 
+    fetchAll()
+
+  }, [])
+  console.log(listUser)
+  //thay đổi valueContent
   function valueChanged(e) {
     setValueContent(e.value);
   }
 
-  // const valueTypeChanged = (e) => {
-  //   setEditorValueType(e.addedItems[0].text.toLowerCase());
-  // };
 
   const getResult = (obj) => {
     // console.log(obj)
@@ -45,13 +55,9 @@ export default function Contract() {
       let value = listOption[i].replace("{{", "");
       value = value.replace("}}", "");
 
-      // console.log(value)
+      console.log(value)
       ContentCopy = ContentCopy.replace(listOption[i], obj[value])
     }
-    // listOption.map(item => (
-    //   // console.log(item)
-      
-    // ))
     setResult(ContentCopy)
 
   }
@@ -62,7 +68,7 @@ export default function Contract() {
     setListOption([...listOptionCopy, Option])
   }
 
-  
+  console.log(result)
 
   return (
     <>
@@ -71,6 +77,7 @@ export default function Contract() {
           htmlEditor={htmlEditor}
           getResult={getResult}
           getListOption={getListOption}
+          listUser={listUser}
         />
       </div>
       
@@ -78,7 +85,6 @@ export default function Contract() {
         <HtmlEditor ref={htmlEditor}
           height={500}
           value={valueContent}
-          valueType={editorValueType}
           onValueChanged={valueChanged}
         >
           <Toolbar>
